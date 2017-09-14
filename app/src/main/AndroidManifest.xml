@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ir.dr_hesaabi.infa">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:allowBackup="true"
+        android:fullBackupContent="false"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Infa"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="false"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ActivityLogin"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".qrCode.zXing.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".qrCode.zXing.FullScannerActivity"
+            android:label="@string/scanner_activity"
+            android:theme="@style/AppOverlayTheme"
+            android:uiOptions="splitActionBarWhenNarrow">
+            <meta-data
+                android:name="android.support.UI_OPTIONS"
+                android:value="splitActionBarWhenNarrow" />
+        </activity>
+        <activity
+            android:name=".qrCode.zXing.FullScannerFragmentActivity"
+            android:label="@string/scanner_fragment_activity"
+            android:theme="@style/AppOverlayTheme"
+            android:uiOptions="splitActionBarWhenNarrow">
+            <meta-data
+                android:name="android.support.UI_OPTIONS"
+                android:value="splitActionBarWhenNarrow" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".qrCode.zXing.SimpleScannerActivity"
+            android:label="@string/simple_scanner_activity"
+            android:theme="@style/AppOverlayTheme" />
+        <activity
+            android:name=".qrCode.zXing.SimpleScannerFragmentActivity"
+            android:label="@string/simple_scanner_fragment_activity"
+            android:theme="@style/AppOverlayTheme" />
+        <activity
+            android:name=".qrCode.zXing.FullScreenScannerFragmentActivity"
+            android:label="@string/full_screen_scanner_fragment_activity"
+            android:theme="@style/AppOverlayTheme" />
+        <activity
+            android:name=".qrCode.zXing.CustomViewFinderScannerActivity"
+            android:label="@string/custom_view_finder_scanner_activity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".qrCode.zXing.ScalingScannerActivity"
+            android:label="@string/scaling_scanner_activity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".ActivityHome">
+
+        </activity>
+        <activity android:name=".ActivitySearch"></activity>
+    </application>
+
+</manifest>
