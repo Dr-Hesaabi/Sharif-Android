@@ -90,6 +90,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/img_pofak" />
+            app:srcCompat="@drawable/ic_loading" />
     </LinearLayout>
 </RelativeLayout>

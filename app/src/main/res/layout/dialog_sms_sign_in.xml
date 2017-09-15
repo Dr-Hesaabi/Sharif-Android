@@ -60,14 +60,14 @@
                 android:layout_marginTop="8dp">
 
                 <EditText
-                    android:id="@+id/txtSmsCode"
+                    android:id="@+id/edtSmsCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorPrimaryDark"
                     android:gravity="left"
                     android:hint="XXXX"
                     android:inputType="number"
-                    android:maxLength="11"
+                    android:maxLength="4"
                     android:paddingRight="8dp"
                     android:singleLine="true" />
             </android.support.design.widget.TextInputLayout>

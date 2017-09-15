@@ -80,12 +80,14 @@
                         android:focusableInTouchMode="true">
 
                         <EditText
-                            android:id="@+id/tv_a_ABA_Name"
+                            android:id="@+id/edtName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/colorPrimaryDark"
+                            android:enabled="false"
                             android:gravity="right"
                             android:hint="نام"
+                            android:inputType="text"
                             android:paddingRight="8dp"
                             android:singleLine="true" />
                     </android.support.design.widget.TextInputLayout>
@@ -98,12 +100,14 @@
                         android:layout_marginTop="8dp">
 
                         <EditText
-                            android:id="@+id/tv_a_ABA_UserName"
+                            android:id="@+id/edtMobile"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/colorPrimaryDark"
+                            android:enabled="false"
                             android:gravity="right"
                             android:hint="شماره تلفن همراه"
+                            android:inputType="phone"
                             android:paddingRight="8dp"
                             android:singleLine="true" />
                     </android.support.design.widget.TextInputLayout>
@@ -116,14 +120,16 @@
                         android:layout_marginTop="8dp">
 
                         <EditText
-                            android:id="@+id/tv_a_ABA_Address"
+                            android:id="@+id/edtEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/colorPrimaryDark"
+                            android:enabled="false"
                             android:gravity="right"
                             android:hint="ایمیل"
+                            android:inputType="textEmailAddress"
                             android:paddingRight="8dp"
-                            android:singleLine="false" />
+                            android:singleLine="true" />
                     </android.support.design.widget.TextInputLayout>
 
 

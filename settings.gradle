@@ -1,1 +1,1 @@
-include ':app', ':volley', ':Material Rtl Spinner', ':persianmaterialdatetimepicker'
+include ':app', ':volley', ':Material Rtl Spinner'

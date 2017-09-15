@@ -897,6 +897,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/llIncreaseInventory"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/selector_item_right_menu"
@@ -925,6 +926,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/llTransaction"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/selector_item_right_menu"
@@ -981,6 +983,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/llExit"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="@drawable/selector_item_right_menu"

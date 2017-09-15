@@ -36,7 +36,7 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
     private boolean mAutoFocus;
     private ArrayList<Integer> mSelectedIndices;
     private int mCameraId = -1;
-    EditText edtNumber1to4,edtNumber5to8;
+    EditText edtNumber1to4,edtNumber5to8,edtNumber9to12,edtNumber13to16;
 
     @Override
     public void onCreate(Bundle state) {
@@ -53,7 +53,7 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
             mCameraId = -1;
         }
 
-        setContentView(R.layout.activity_simple_scanner);
+        setContentView(R.layout.activity_full_scanner);
         setupToolbar();
         InitViews();
         ViewGroup contentFrame = (ViewGroup) findViewById(R.id.content_frame);
@@ -156,6 +156,8 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
         }else if(rawResult.getText().substring(0,4).equals("ACB_")){
             edtNumber1to4.setText(rawResult.getText().substring(4,8).toString());
             edtNumber5to8.setText(rawResult.getText().substring(8,12).toString());
+            edtNumber9to12.setText(rawResult.getText().substring(12,16).toString());
+            edtNumber13to16.setText(rawResult.getText().substring(16,20).toString());
         }else {
             Toast.makeText(FullScannerActivity.this,"بارکد معتبر نیست",Toast.LENGTH_LONG).show();
         }
@@ -229,6 +231,8 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
     private void InitViews(){
         edtNumber1to4 = (EditText) findViewById(R.id.edtNumber1to4);
         edtNumber5to8 = (EditText) findViewById(R.id.edtNumber5to8);
+        edtNumber9to12 = (EditText) findViewById(R.id.edtNumber9to12);
+        edtNumber13to16 = (EditText) findViewById(R.id.edtNumber13to16);
     }
 
     public void setupToolbar() {

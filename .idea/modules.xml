@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/DrHesaabi.iml" filepath="$PROJECT_DIR$/DrHesaabi.iml" />
       <module fileurl="file://$PROJECT_DIR$/Material Rtl Spinner/Material Rtl Spinner.iml" filepath="$PROJECT_DIR$/Material Rtl Spinner/Material Rtl Spinner.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/persianmaterialdatetimepicker/persianmaterialdatetimepicker.iml" filepath="$PROJECT_DIR$/persianmaterialdatetimepicker/persianmaterialdatetimepicker.iml" />
       <module fileurl="file://$PROJECT_DIR$/volley/volley.iml" filepath="$PROJECT_DIR$/volley/volley.iml" />
     </modules>
   </component>

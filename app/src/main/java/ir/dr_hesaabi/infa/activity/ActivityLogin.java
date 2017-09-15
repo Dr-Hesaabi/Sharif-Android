@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -17,7 +16,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import ir.dr_hesaabi.infa.R;
-import ir.dr_hesaabi.infa.qrCode.zXing.FullScannerActivity;
 import ir.dr_hesaabi.infa.utils.Font;
 import ir.dr_hesaabi.infa.webService.VolleyAdapter;
 
@@ -33,7 +31,8 @@ public class ActivityLogin extends AppCompatActivity {
         if (shared.getBoolean("firstrun", true)) {
             editor.putString("mobile","");
             editor.putString("name","");
-            editor.putString("family","");
+            editor.putString("userType","customer");
+            editor.putString("smsCode","");
             editor.commit();
             editor.putBoolean("firstrun", false).commit();
         }
@@ -42,11 +41,17 @@ public class ActivityLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        InitViews();
 
         shared = getSharedPreferences("ir.dr_hesaabi.infa", MODE_PRIVATE);
         editor = shared.edit();
+
+        if (shared.getString("mobile", "")!=null) {
+            ActivityLogin.this.startActivity(new Intent(ActivityLogin.this,ActivityHome.class));
+            finish();
+        }
+
+        setContentView(R.layout.activity_login);
+        InitViews();
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -86,21 +91,39 @@ public class ActivityLogin extends AppCompatActivity {
                     edtPhoneNumber.setError("شماره وارد شده صحیح نیست!");
                     return;
                 } else {
-//                    VolleyAdapter volleyAdapter = new VolleyAdapter(context);
-//                    volleyAdapter.PostPhoneNumberAsyncTask.execute("phoneNumber");
+                    editor.putString("mobile",phoneNumber).commit();
+                    VolleyAdapter volleyAdapter = new VolleyAdapter(ActivityLogin.this);
+                    volleyAdapter.getSmsCode(ActivityLogin.this,phoneNumber);
+                    dialog.dismiss();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            ShowSigninDialog();
+                        }
+                    },700);
                 }
             }
         });
         btnOk.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                dialog.dismiss();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        ShowSigninDialog();
-                    }
-                },700);
+                String phoneNumber = edtPhoneNumber.getText().toString();
+                if (phoneNumber.length() == 0) {
+                    edtPhoneNumber.setError("لطفا شماره تلفن خود را وارد کنید!");
+                    return false;
+                } else if (phoneNumber.length() < 11) {
+                    edtPhoneNumber.setError("شماره وارد شده صحیح نیست!");
+                    return false;
+                } else {
+                    editor.putString("mobile",phoneNumber).commit();
+                    dialog.dismiss();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            ShowSigninDialog();
+                        }
+                    },700);
+                }
                 return false;
             }
         });
@@ -115,7 +138,7 @@ public class ActivityLogin extends AppCompatActivity {
         dialog.setCancelable(true);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.LoginDialogAnimation;
-        EditText edtPhoneNumber = (EditText) dialog.findViewById(R.id.edtPhoneNumber);
+        final EditText edtSmsCode = (EditText) dialog.findViewById(R.id.edtSmsCode);
         Button btnCancel = (Button) dialog.findViewById(R.id.btnCancel);
         Button btnOk = (Button) dialog.findViewById(R.id.btnOk);
         btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -127,7 +150,19 @@ public class ActivityLogin extends AppCompatActivity {
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                String smsCode = edtSmsCode.getText().toString();
+                if (smsCode.length() == 0) {
+                    edtSmsCode.setError("لطفا کد را وارد کنید!");
+                    return;
+                } else if (smsCode.length() < 4) {
+                    edtSmsCode.setError("لطفا 4 رقم کد را به وصرت کامل وارد کنید!");
+                    return;
+                } else if (!shared.getString("smsCode","").equals(smsCode)) {
+                    edtSmsCode.setError("کد وارد شده صحیح نیست!");
+                    return;
+                } else if(shared.getString("smsCode","").equals(smsCode)) {
+                    ActivityLogin.this.startActivity(new Intent(ActivityLogin.this,ActivityHome.class));
+                }
             }
         });
         btnOk.setOnLongClickListener(new View.OnLongClickListener() {

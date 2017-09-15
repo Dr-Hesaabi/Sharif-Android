@@ -44,7 +44,8 @@
         <activity android:name=".activity.ActivityAddStaff" />
         <activity android:name=".activity.ActivityStaffs" />
         <activity android:name=".activity.ActivityAddOrEditStore" />
-        <activity android:name=".activity.ActivityAddOrEditStaff"></activity>
+        <activity android:name=".activity.ActivityAddOrEditStaff" />
+        <activity android:name=".activity.ActivityYourProfit"></activity>
     </application>
 
 </manifest>

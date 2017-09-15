@@ -26,7 +26,7 @@ public class ActivityHome extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ImageView imgSearch;
     private FloatingActionButton fabBarcodeScanner;
-    LinearLayout llAccount;
+    LinearLayout llAccount,llIncreaseInventory,llTransaction,llExit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,18 @@ public class ActivityHome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ActivityHome.this.startActivity(new Intent(ActivityHome.this,ActivityEditProfile.class));
+            }
+        });
+        findViewById(R.id.llTransaction).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityHome.this.startActivity(new Intent(ActivityHome.this,ActivityBandSuccessTransaction.class));
+            }
+        });
+        findViewById(R.id.llExit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
         materialButtonRight.setRotation(180);
@@ -107,5 +119,8 @@ public class ActivityHome extends AppCompatActivity {
         imgSearch = ((ImageView) findViewById(R.id.imgSearch));
         fabBarcodeScanner = (FloatingActionButton) findViewById(R.id.fabBarcodeScanner);
         llAccount = (LinearLayout) findViewById(R.id.llAccount);
+        llIncreaseInventory = (LinearLayout) findViewById(R.id.llIncreaseInventory);
+        llTransaction = (LinearLayout) findViewById(R.id.llTransaction);
+        llExit = (LinearLayout) findViewById(R.id.llExit);
     }
 }
