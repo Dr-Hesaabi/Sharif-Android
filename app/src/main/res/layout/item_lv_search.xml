@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:visibility="invisible">
 
 
     <LinearLayout
@@ -26,7 +27,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/txtProductName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -44,24 +45,24 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right|center"
-                android:singleLine="true"
-                android:text="قیمت جدید"
-                android:textColor="@color/secondary_text"
-                android:textSize="10sp" />
-
-            <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/txtOldCost"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right|center"
                 android:singleLine="true"
                 android:text="قیمت قدیم"
+                android:textColor="@color/secondary_text"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/txtNewCost"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right|center"
+                android:singleLine="true"
+                android:text="قیمت جدید"
                 android:textColor="@color/colorPrimaryLight"
                 android:textSize="10sp" />
         </LinearLayout>
@@ -73,7 +74,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/txtOff"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

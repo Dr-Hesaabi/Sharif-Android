@@ -11,7 +11,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -37,6 +39,7 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
     private ArrayList<Integer> mSelectedIndices;
     private int mCameraId = -1;
     EditText edtNumber1to4,edtNumber5to8,edtNumber9to12,edtNumber13to16;
+    Button btnCancel,btnOk;
 
     @Override
     public void onCreate(Bundle state) {
@@ -60,6 +63,13 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
         mScannerView = new ZXingScannerView(this);
         setupFormats();
         contentFrame.addView(mScannerView);
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     @Override
@@ -233,6 +243,8 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
         edtNumber5to8 = (EditText) findViewById(R.id.edtNumber5to8);
         edtNumber9to12 = (EditText) findViewById(R.id.edtNumber9to12);
         edtNumber13to16 = (EditText) findViewById(R.id.edtNumber13to16);
+        btnCancel = (Button) findViewById(R.id.btnCancel);
+        btnOk = (Button) findViewById(R.id.btnOk);
     }
 
     public void setupToolbar() {

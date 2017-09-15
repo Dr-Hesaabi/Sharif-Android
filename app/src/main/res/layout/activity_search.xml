@@ -40,4 +40,11 @@
         android:layout_height="2dp"
         android:background="@drawable/shadow_border" />
 
+    <ListView
+        android:id="@+id/lvSearch"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:padding="16dp" />
+
 </LinearLayout>

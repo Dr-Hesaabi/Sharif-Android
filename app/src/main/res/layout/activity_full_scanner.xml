@@ -55,7 +55,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="16dp"
-                        android:text="کد 8 رقمی بارکد را در کادر زیر وارد کنید"
+                        android:text="کد 16 رقمی بارکد را در کادر زیر وارد کنید"
                         android:textColor="@color/colorPrimary" />
                 </LinearLayout>
 
@@ -187,7 +187,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/btnOk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="4dp"
@@ -197,7 +197,7 @@
                     android:textColor="@android:color/white" />
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/btnCancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"

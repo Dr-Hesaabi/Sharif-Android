@@ -1,6 +1,7 @@
 package ir.dr_hesaabi.infa.activity;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -11,11 +12,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import com.balysv.materialmenu.MaterialMenuDrawable;
 import com.balysv.materialmenu.MaterialMenuView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ir.dr_hesaabi.infa.R;
+import ir.dr_hesaabi.infa.adapter.OrderFeaturesLVAdapter;
+import ir.dr_hesaabi.infa.modol.OrderFeature;
 import ir.dr_hesaabi.infa.qrCode.zXing.FullScannerActivity;
 import ir.dr_hesaabi.infa.utils.Font;
 
@@ -26,14 +33,15 @@ public class ActivityHome extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ImageView imgSearch;
     private FloatingActionButton fabBarcodeScanner;
-    LinearLayout llAccount,llIncreaseInventory,llTransaction,llExit;
+    private LinearLayout llAccount,llIncreaseInventory,llTransaction,llExit;
+    private ListView lvOrders;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initViews();
-
+        FillUpListview();
 
         imgSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +61,12 @@ public class ActivityHome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ActivityHome.this.startActivity(new Intent(ActivityHome.this,ActivityEditProfile.class));
+            }
+        });
+        findViewById(R.id.llIncreaseInventory).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityHome.this.startActivity(new Intent(ActivityHome.this,ActivityIncreaseInventory.class));
             }
         });
         findViewById(R.id.llTransaction).setOnClickListener(new View.OnClickListener() {
@@ -109,6 +123,29 @@ public class ActivityHome extends AppCompatActivity {
 
     }
 
+    private void FillUpListview(){
+        // rexa
+        List<OrderFeature> productFeatures = new ArrayList<>();
+        OrderFeature orderFeature = new OrderFeature();
+        orderFeature.setName("کفش");
+        orderFeature.setStore("فروشاه نیما");
+        orderFeature.setCost("25000 تومان");
+        orderFeature.setImage("");
+        productFeatures.add(orderFeature);
+        productFeatures.add(orderFeature);
+        productFeatures.add(orderFeature);
+        productFeatures.add(orderFeature);
+        productFeatures.add(orderFeature);
+        final OrderFeaturesLVAdapter orderFeaturesLVAdapter = new OrderFeaturesLVAdapter(ActivityHome.this,productFeatures);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                lvOrders.setAdapter(orderFeaturesLVAdapter);
+            }
+        },500);
+    }
+
     private void initViews(){
         Font.setFont((ViewGroup) getWindow().getDecorView(), ActivityHome.this, "behdad.ttf");
 
@@ -122,5 +159,6 @@ public class ActivityHome extends AppCompatActivity {
         llIncreaseInventory = (LinearLayout) findViewById(R.id.llIncreaseInventory);
         llTransaction = (LinearLayout) findViewById(R.id.llTransaction);
         llExit = (LinearLayout) findViewById(R.id.llExit);
+        lvOrders = (ListView) findViewById(R.id.lvOrders);
     }
 }

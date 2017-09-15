@@ -45,20 +45,21 @@ public class ActivityLogin extends AppCompatActivity {
         shared = getSharedPreferences("ir.dr_hesaabi.infa", MODE_PRIVATE);
         editor = shared.edit();
 
-        if (shared.getString("mobile", "")!=null) {
-            ActivityLogin.this.startActivity(new Intent(ActivityLogin.this,ActivityHome.class));
-            finish();
-        }
-
         setContentView(R.layout.activity_login);
         InitViews();
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                ShowSignUpDialog();
-            }
-        },500);
+
+        if (shared.getString("mobile", "")!=null) {
+            ActivityLogin.this.startActivity(new Intent(ActivityLogin.this,ActivityHome.class));
+            finish();
+        }else{
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ShowSignUpDialog();
+                }
+            },500);
+        }
 
     }
     private void ShowSignUpDialog(){

@@ -1,15 +1,18 @@
 package ir.dr_hesaabi.infa.activity;
 
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.json.JSONObject;
@@ -41,7 +44,7 @@ public class ActivityEditProfile extends AppCompatActivity {
         ((Button)findViewById(R.id.btn_a_ABA_EditAccount)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-POST post = new POST();
+        POST post = new POST();
                 try {
                     String a  = post.execute("").get();
                 } catch (InterruptedException e) {
@@ -65,22 +68,16 @@ POST post = new POST();
             }
         });
 
-        try {
-//            VolleyAdapter volleyAdapter = new VolleyAdapter(ActivityEditProfile.this);
-//            JSONObject jsonObject = volleyAdapter.getUserInfo(ActivityEditProfile.this,shared.getString("mobile",""));
-//            Log.i("JSoNObj",jsonObject.get("name").toString()+"   "+jsonObject.get("email").toString());
-//            edtName.setText(jsonObject.get("name").toString());
-//            edtMobile.setText(shared.getString("mobile",""));
-//            edtEmail.setText(jsonObject.get("email").toString());
 
-           String rrr = new GET().execute("").get();
-            JSONObject js =new JSONObject(rrr);
-            edtName.setText(js.get("name").toString());
-          edtMobile.setText(shared.getString("mobile",""));
-            edtEmail.setText(js.get("email").toString());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+                try {
+                    String rrr = new GET().execute("").get();
+                    JSONObject js =new JSONObject(rrr);
+                    edtName.setText(js.get("name").toString());
+                    edtMobile.setText(shared.getString("mobile",""));
+                    edtEmail.setText(js.get("email").toString());
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
 
     }
 
@@ -156,5 +153,20 @@ POST post = new POST();
         edtName = (EditText) findViewById(R.id.edtName);
         edtMobile = (EditText) findViewById(R.id.edtMobile);
         edtEmail = (EditText) findViewById(R.id.edtEmail);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            onBackPressed();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Toast.makeText(ActivityEditProfile.this,"finish",Toast.LENGTH_LONG).show();
+        finish();
     }
 }
