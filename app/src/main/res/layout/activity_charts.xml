@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="ir.dr_hesaabi.infa.activity.ActivityCharts">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:contentInsetEnd="0dp"
+        app:contentInsetStart="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="3dp"
+        android:layoutDirection="ltr">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="پیشنهادهای آینده خرید شما"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_chart"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#3777"
+            android:gravity="center"
+            android:text="به زودی ..."
+            android:textColor="@color/primary_text"
+            android:textSize="48sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

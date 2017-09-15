@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
@@ -150,9 +151,14 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
             Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
             r.play();
         } catch (Exception e) {}
-        edtNumber1to4.setText(rawResult.getText().substring(5,9).toString());
-        edtNumber5to8.setText(rawResult.getText().substring(9,13).toString());
-        showMessageDialog("Contents = " + rawResult.getText() + ", Format = " + rawResult.getBarcodeFormat().toString());
+        if(rawResult.getText().length()<12){
+            Toast.makeText(FullScannerActivity.this,"بارکد معتبر نیست",Toast.LENGTH_LONG).show();
+        }else if(rawResult.getText().substring(0,4).equals("ACB_")){
+            edtNumber1to4.setText(rawResult.getText().substring(4,8).toString());
+            edtNumber5to8.setText(rawResult.getText().substring(8,12).toString());
+        }else {
+            Toast.makeText(FullScannerActivity.this,"بارکد معتبر نیست",Toast.LENGTH_LONG).show();
+        }
     }
 
     public void showMessageDialog(String message) {

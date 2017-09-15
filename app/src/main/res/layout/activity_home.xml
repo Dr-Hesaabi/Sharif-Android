@@ -868,6 +868,7 @@
                     android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/llAccount"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/selector_item_right_menu"
@@ -1021,7 +1022,7 @@
 
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/myFAB"
+        android:id="@+id/fabBarcodeScanner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

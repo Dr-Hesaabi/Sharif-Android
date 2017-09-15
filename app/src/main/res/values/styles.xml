@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowAnimationStyle">@style/myThemeAnimation</item>
     </style>
 
     <style name="LoginDialogAnimation">
@@ -13,7 +14,12 @@
         <item name="android:windowExitAnimation">@anim/zoom_out</item>
     </style>
 
-
+    <style name="myThemeAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/zoom_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/zoom_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/zoom_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/zoom_out</item>
+    </style>
 
     <style name="AppOverlayTheme" parent="@style/Theme.AppCompat.Light">
         <item name="windowNoTitle">true</item>

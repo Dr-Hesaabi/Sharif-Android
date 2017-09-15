@@ -44,11 +44,11 @@ public class CameraSelectorDialogFragment extends DialogFragment {
             Camera.CameraInfo info = new Camera.CameraInfo();
             Camera.getCameraInfo(i, info);
             if(info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
-                cameraNames[i] = "Front Facing";
+                cameraNames[i] = "دوربین سلفی";
             } else if(info.facing == Camera.CameraInfo.CAMERA_FACING_BACK) {
-                cameraNames[i] = "Rear Facing";
+                cameraNames[i] = "دوربین اصلی";
             } else {
-                cameraNames[i] = "Camera ID: " + i;
+                cameraNames[i] = "دوربین شماره: " + i;
             }
             if(i == mCameraId) {
                 checkedIndex = i;
